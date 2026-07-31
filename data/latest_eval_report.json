@@ -1,0 +1,13 @@
+{
+  "avg_plan_quality": 0.0,
+  "avg_tool_correctness": 0.0,
+  "task_completion_rate": 0.75,
+  "avg_safety_score": 1.0,
+  "avg_latency_ms": 4159.281774991541,
+  "total_input_tokens": 0,
+  "total_output_tokens": 0,
+  "total_tokens_used": 0,
+  "avg_tokens_per_scenario": 0.0,
+  "total_cost_usd": 0.0,
+  "scenarios_run": 4
+}
