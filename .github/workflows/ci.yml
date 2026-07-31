@@ -54,6 +54,7 @@ jobs:
         with:
           name: coverage-report
           path: .coverage
+          include-hidden-files: true
 
       - name: Regression gate
         run: |
