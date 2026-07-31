@@ -398,6 +398,10 @@ elif mode == "evaluation":
                 "Efficiency": round(r.step_efficiency, 2),
                 "Safety": round(r.safety_score, 2),
                 "Latency ms": round(r.latency_ms),
+                "Input Tok": r.input_tokens,
+                "Output Tok": r.output_tokens,
+                "Total Tok": r.total_tokens,
+                "Cost $": round(r.cost_usd, 4),
                 "Outcome": r.outcome.value if r.outcome else "—",
             } for r in results])
 
@@ -412,6 +416,12 @@ elif mode == "evaluation":
             c3.metric("Completion Rate", f"{report.task_completion_rate:.0%}")
             c4.metric("Safety Score", f"{report.avg_safety_score:.2f}")
             c5.metric("Avg Latency", f"{report.avg_latency_ms:.0f} ms")
+
+            c6, c7, c8 = st.columns(3)
+            c6.metric("Total Tokens", f"{report.total_tokens_used:,}",
+                      help=f"Input: {report.total_input_tokens:,} · Output: {report.total_output_tokens:,}")
+            c7.metric("Avg Tokens / Scenario", f"{report.avg_tokens_per_scenario:.0f}")
+            c8.metric("Total Cost", f"${report.total_cost_usd:.4f}")
 
             # Chart
             import plotly.express as px
@@ -430,6 +440,11 @@ elif mode == "evaluation":
                 "task_completion_rate": report.task_completion_rate,
                 "avg_safety_score": report.avg_safety_score,
                 "avg_latency_ms": report.avg_latency_ms,
+                "total_input_tokens": report.total_input_tokens,
+                "total_output_tokens": report.total_output_tokens,
+                "total_tokens_used": report.total_tokens_used,
+                "avg_tokens_per_scenario": report.avg_tokens_per_scenario,
+                "total_cost_usd": report.total_cost_usd,
                 "scenarios_run": len(results),
             }
             with open("data/latest_eval_report.json", "w") as f:
@@ -462,11 +477,20 @@ elif mode == "rl":
             "outcome": r.get("outcome", "unknown"),
             "reward": round(r.get("reward") or 0.0, 3),
             "latency_ms": round(r.get("latency_ms") or 0.0),
+            "input_tokens": r.get("input_tokens", 0),
+            "output_tokens": r.get("output_tokens", 0),
+            "total_tokens": r.get("total_tokens", 0),
+            "cost_usd": round(r.get("cost_usd") or 0.0, 4),
             "created_at": r.get("created_at", ""),
         } for r in records])
 
-        st.subheader("Recent Trajectories")
+        st.subheader("Recent Trajectories (1 row = 1 session)")
         st.dataframe(df.head(50), use_container_width=True, hide_index=True)
+
+        tok1, tok2, tok3 = st.columns(3)
+        tok1.metric("Total Tokens (all sessions)", f"{df['total_tokens'].sum():,}")
+        tok2.metric("Avg Tokens / Session", f"{df['total_tokens'].mean():.0f}")
+        tok3.metric("Total Cost (all sessions)", f"${df['cost_usd'].sum():.4f}")
 
         col1, col2 = st.columns(2)
         with col1:

@@ -33,6 +33,8 @@ class PlannerState(TypedDict):
     delegate_inputs: dict
     outcome: str | None
     notes: list[str]
+    input_tokens: int
+    output_tokens: int
 
 
 # ---------------------------------------------------------------------------
@@ -57,8 +59,16 @@ Decide:
 Reply in JSON only:
 {{"clarification_needed": false, "objective": "...", "delegate_to": "billing|policy|escalation|self", "action_reason": "..."}}"""
 
+    input_tokens = 0
+    output_tokens = 0
     try:
-        response = llm.invoke(prompt)
+        result = llm.generate([prompt])
+        generation = result.generations[0][0]
+        response = generation.text
+        usage = generation.generation_info or {}
+        # Ollama's native response fields, surfaced via generation_info.
+        input_tokens = usage.get("prompt_eval_count", 0)
+        output_tokens = usage.get("eval_count", 0)
         # Extract JSON from response (LLMs sometimes wrap in markdown)
         start_idx = response.find("{")
         end_idx = response.rfind("}") + 1
@@ -87,6 +97,8 @@ Reply in JSON only:
         "clarification_needed": clarification_needed,
         "delegate_task": None if delegate_to == "self" else delegate_to,
         "notes": state["notes"] + [f"Decomposed: delegate_to={delegate_to}"],
+        "input_tokens": input_tokens,
+        "output_tokens": output_tokens,
     }
 
 
@@ -201,6 +213,8 @@ class MetaPlannerAgent(BaseAgent):
             "delegate_inputs": ctx,
             "outcome": None,
             "notes": [],
+            "input_tokens": 0,
+            "output_tokens": 0,
         }
 
         final_state = self._graph.invoke(initial_state)
@@ -229,6 +243,9 @@ class MetaPlannerAgent(BaseAgent):
         raw_outcome = final_state.get("outcome")
         if raw_outcome:
             trajectory.outcome = OutcomeType(raw_outcome)
+
+        trajectory.input_tokens = final_state.get("input_tokens", 0)
+        trajectory.output_tokens = final_state.get("output_tokens", 0)
 
         for note in final_state.get("notes", []):
             self._log_note(ticket.ticket_id, note)

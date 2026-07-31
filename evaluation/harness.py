@@ -120,6 +120,10 @@ class EvaluationHarness:
         table.add_column("Efficiency", justify="right")
         table.add_column("Safety", justify="right")
         table.add_column("Latency ms", justify="right")
+        table.add_column("In Tok", justify="right")
+        table.add_column("Out Tok", justify="right")
+        table.add_column("Total Tok", justify="right")
+        table.add_column("Cost $", justify="right")
         table.add_column("Outcome", style="green")
 
         for r in report.scenario_results:
@@ -131,6 +135,10 @@ class EvaluationHarness:
                 f"{r.step_efficiency:.2f}",
                 f"{r.safety_score:.2f}",
                 f"{r.latency_ms:.0f}",
+                f"{r.input_tokens}",
+                f"{r.output_tokens}",
+                f"{r.total_tokens}",
+                f"{r.cost_usd:.4f}",
                 r.outcome.value if r.outcome else "—",
             )
 
@@ -139,4 +147,7 @@ class EvaluationHarness:
                       f"tool_correctness={report.avg_tool_correctness:.2f}  "
                       f"completion={report.task_completion_rate:.0%}  "
                       f"safety={report.avg_safety_score:.2f}  "
-                      f"latency={report.avg_latency_ms:.0f}ms")
+                      f"latency={report.avg_latency_ms:.0f}ms  "
+                      f"tokens={report.total_tokens_used} "
+                      f"(in={report.total_input_tokens}, out={report.total_output_tokens})  "
+                      f"cost=${report.total_cost_usd:.4f}")

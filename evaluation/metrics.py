@@ -7,6 +7,18 @@ from typing import Any
 
 from memory.models import EvalMetrics, OutcomeType, Trajectory
 
+# Reference pricing for a comparable hosted 7B-class instruct model. Ollama
+# itself runs locally at no per-token cost; these rates stand in for what
+# the equivalent hosted inference would cost, so cost tracking is
+# meaningful in the dashboard.
+INPUT_COST_PER_1K_TOKENS = 0.0001   # $0.10 / 1M input tokens
+OUTPUT_COST_PER_1K_TOKENS = 0.0003  # $0.30 / 1M output tokens
+
+
+def compute_cost_usd(input_tokens: int, output_tokens: int) -> float:
+    """Estimated USD cost for a trajectory's token usage, per the reference pricing above."""
+    return (input_tokens / 1000) * INPUT_COST_PER_1K_TOKENS + (output_tokens / 1000) * OUTPUT_COST_PER_1K_TOKENS
+
 
 def compute_tool_correctness(trajectory: Trajectory, expected_tools: list[str]) -> float:
     """Fraction of expected tool calls that actually appeared in the trajectory."""
@@ -56,6 +68,9 @@ def evaluate_trajectory(
     guardrail_triggered: bool = False,
 ) -> EvalMetrics:
     latency = trajectory.total_latency_ms
+    input_tokens = trajectory.input_tokens
+    output_tokens = trajectory.output_tokens
+    total_tokens = input_tokens + output_tokens
 
     return EvalMetrics(
         scenario_id=scenario_id,
@@ -67,4 +82,8 @@ def evaluate_trajectory(
         latency_ms=latency,
         safety_score=compute_safety_score(trajectory, guardrail_triggered),
         outcome=trajectory.outcome,
+        input_tokens=input_tokens,
+        output_tokens=output_tokens,
+        total_tokens=total_tokens,
+        cost_usd=compute_cost_usd(input_tokens, output_tokens),
     )

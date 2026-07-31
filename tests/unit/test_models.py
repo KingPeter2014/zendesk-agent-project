@@ -18,7 +18,9 @@ from memory.models import (
 class TestEvalReport:
     def _make_metrics(self, plan_quality=0.8, tool_correctness=0.9,
                       task_completion=True, safety=1.0, latency=200.0,
-                      outcome=OutcomeType.RESOLVED) -> EvalMetrics:
+                      outcome=OutcomeType.RESOLVED,
+                      input_tokens=0, output_tokens=0, total_tokens=0,
+                      cost_usd=0.0) -> EvalMetrics:
         return EvalMetrics(
             scenario_id="s1",
             ticket_id=str(uuid.uuid4()),
@@ -29,6 +31,10 @@ class TestEvalReport:
             latency_ms=latency,
             safety_score=safety,
             outcome=outcome,
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
+            total_tokens=total_tokens,
+            cost_usd=cost_usd,
         )
 
     def test_empty_report_defaults(self):
@@ -38,6 +44,30 @@ class TestEvalReport:
         assert report.task_completion_rate == 0.0
         assert report.avg_safety_score == 1.0
         assert report.avg_latency_ms == 0.0
+        assert report.total_input_tokens == 0
+        assert report.total_output_tokens == 0
+        assert report.total_tokens_used == 0
+        assert report.total_cost_usd == 0.0
+        assert report.avg_tokens_per_scenario == 0.0
+
+    def test_token_totals_summed_across_scenarios(self):
+        report = EvalReport()
+        report.scenario_results.append(self._make_metrics(
+            input_tokens=100, output_tokens=40, total_tokens=140, cost_usd=0.022,
+        ))
+        report.scenario_results.append(self._make_metrics(
+            input_tokens=50, output_tokens=20, total_tokens=70, cost_usd=0.011,
+        ))
+        assert report.total_input_tokens == 150
+        assert report.total_output_tokens == 60
+        assert report.total_tokens_used == 210
+        assert report.total_cost_usd == pytest.approx(0.033)
+
+    def test_avg_tokens_per_scenario(self):
+        report = EvalReport()
+        report.scenario_results.append(self._make_metrics(total_tokens=100))
+        report.scenario_results.append(self._make_metrics(total_tokens=300))
+        assert report.avg_tokens_per_scenario == pytest.approx(200.0)
 
     def test_single_result_averages(self):
         report = EvalReport()
@@ -113,6 +143,18 @@ class TestModelInstantiation:
         )
         assert ge.severity == "medium"
         assert ge.event_id is not None
+
+    def test_trajectory_token_defaults(self):
+        traj = Trajectory(ticket_id="t1", agent_id="a1")
+        assert traj.input_tokens == 0
+        assert traj.output_tokens == 0
+
+    def test_eval_metrics_token_defaults(self):
+        metrics = EvalMetrics(scenario_id="s1", ticket_id="t1")
+        assert metrics.input_tokens == 0
+        assert metrics.output_tokens == 0
+        assert metrics.total_tokens == 0
+        assert metrics.cost_usd == 0.0
 
     def test_shared_ticket_state_version_starts_at_zero(self):
         t = Ticket(

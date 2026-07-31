@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from evaluation.metrics import compute_cost_usd
 from memory.models import Trajectory
 from memory.sqlite_store import SqliteStore
 
@@ -25,6 +26,8 @@ class TrajectoryLogger(SqliteStore):
                 outcome       TEXT,
                 reward        REAL,
                 latency_ms    REAL,
+                input_tokens  INTEGER DEFAULT 0,
+                output_tokens INTEGER DEFAULT 0,
                 created_at    TEXT DEFAULT (datetime('now'))
             )
             """
@@ -38,8 +41,9 @@ class TrajectoryLogger(SqliteStore):
         self._conn.execute(
             """
             INSERT OR REPLACE INTO trajectories
-                (trajectory_id, ticket_id, agent_id, steps_json, outcome, reward, latency_ms)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+                (trajectory_id, ticket_id, agent_id, steps_json, outcome, reward, latency_ms,
+                 input_tokens, output_tokens)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 trajectory.trajectory_id,
@@ -49,13 +53,16 @@ class TrajectoryLogger(SqliteStore):
                 trajectory.outcome.value if trajectory.outcome else None,
                 trajectory.reward,
                 trajectory.total_latency_ms,
+                trajectory.input_tokens,
+                trajectory.output_tokens,
             ),
         )
         self._conn.commit()
 
     def fetch_all(self) -> list[dict]:
         rows = self._conn.execute(
-            "SELECT trajectory_id, ticket_id, agent_id, steps_json, outcome, reward, latency_ms, created_at "
+            "SELECT trajectory_id, ticket_id, agent_id, steps_json, outcome, reward, latency_ms, "
+            "input_tokens, output_tokens, created_at "
             "FROM trajectories ORDER BY created_at DESC"
         ).fetchall()
         return [
@@ -67,7 +74,11 @@ class TrajectoryLogger(SqliteStore):
                 "outcome": r[4],
                 "reward": r[5],
                 "latency_ms": r[6],
-                "created_at": r[7],
+                "input_tokens": r[7],
+                "output_tokens": r[8],
+                "total_tokens": r[7] + r[8],
+                "cost_usd": compute_cost_usd(r[7], r[8]),
+                "created_at": r[9],
             }
             for r in rows
         ]

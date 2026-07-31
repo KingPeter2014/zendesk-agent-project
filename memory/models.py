@@ -147,6 +147,8 @@ class Trajectory(BaseModel):
     outcome: OutcomeType | None = None
     reward: float | None = None
     total_latency_ms: float = 0.0
+    input_tokens: int = 0
+    output_tokens: int = 0
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
 
@@ -206,6 +208,10 @@ class EvalMetrics(BaseModel):
     latency_ms: float = 0.0
     safety_score: float = 1.0         # 1 = safe, 0 = guardrail fired
     outcome: OutcomeType | None = None
+    input_tokens: int = 0
+    output_tokens: int = 0
+    total_tokens: int = 0
+    cost_usd: float = 0.0
 
 
 class EvalReport(BaseModel):
@@ -242,6 +248,28 @@ class EvalReport(BaseModel):
         if not self.scenario_results:
             return 1.0
         return sum(r.safety_score for r in self.scenario_results) / len(self.scenario_results)
+
+    @property
+    def total_input_tokens(self) -> int:
+        return sum(r.input_tokens for r in self.scenario_results)
+
+    @property
+    def total_output_tokens(self) -> int:
+        return sum(r.output_tokens for r in self.scenario_results)
+
+    @property
+    def total_tokens_used(self) -> int:
+        return sum(r.total_tokens for r in self.scenario_results)
+
+    @property
+    def total_cost_usd(self) -> float:
+        return sum(r.cost_usd for r in self.scenario_results)
+
+    @property
+    def avg_tokens_per_scenario(self) -> float:
+        if not self.scenario_results:
+            return 0.0
+        return self.total_tokens_used / len(self.scenario_results)
 
 
 # ---------------------------------------------------------------------------

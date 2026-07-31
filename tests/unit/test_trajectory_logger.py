@@ -10,7 +10,8 @@ from memory.models import AgentRole, AgentStep, OutcomeType, ToolCall, Trajector
 from rl_pipeline.trajectory_logger import TrajectoryLogger
 
 
-def _make_trajectory(outcome: OutcomeType = OutcomeType.RESOLVED) -> Trajectory:
+def _make_trajectory(outcome: OutcomeType = OutcomeType.RESOLVED,
+                      input_tokens: int = 0, output_tokens: int = 0) -> Trajectory:
     step = AgentStep(agent_id="a", agent_role=AgentRole.BILLING, action="execute:process_refund")
     step.tool_calls.append(ToolCall(tool_name="process_refund", inputs={"order_id": "x"}, latency_ms=50.0))
     return Trajectory(
@@ -20,6 +21,8 @@ def _make_trajectory(outcome: OutcomeType = OutcomeType.RESOLVED) -> Trajectory:
         outcome=outcome,
         reward=0.8,
         total_latency_ms=50.0,
+        input_tokens=input_tokens,
+        output_tokens=output_tokens,
     )
 
 
@@ -75,3 +78,20 @@ class TestTrajectoryLogger:
         assert isinstance(steps, list)
         assert len(steps) == 1
         assert steps[0]["tool_calls"][0]["tool_name"] == "process_refund"
+
+    def test_token_usage_persisted_per_session(self, logger):
+        traj = _make_trajectory(input_tokens=200, output_tokens=80)
+        logger.log(traj)
+        record = logger.fetch_all()[0]
+        assert record["input_tokens"] == 200
+        assert record["output_tokens"] == 80
+        assert record["total_tokens"] == 280
+        assert record["cost_usd"] > 0.0
+
+    def test_token_usage_defaults_to_zero(self, logger):
+        logger.log(_make_trajectory())
+        record = logger.fetch_all()[0]
+        assert record["input_tokens"] == 0
+        assert record["output_tokens"] == 0
+        assert record["total_tokens"] == 0
+        assert record["cost_usd"] == 0.0

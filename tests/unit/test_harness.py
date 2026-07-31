@@ -41,6 +41,8 @@ def mock_agent():
             outcome=OutcomeType.RESOLVED,
             steps=[step],
             total_latency_ms=100.0,
+            input_tokens=80,
+            output_tokens=30,
         )
     agent = MagicMock()
     agent.handle.side_effect = _handle
@@ -90,6 +92,14 @@ class TestEvaluationHarness:
         harness = EvaluationHarness(mock_shared_memory)
         metrics = harness.run_scenario(HAPPY_PATH_SCENARIOS[0], mock_agent)
         assert metrics.task_completion is True
+
+    def test_run_scenario_propagates_token_usage(self, mock_shared_memory, mock_agent):
+        harness = EvaluationHarness(mock_shared_memory)
+        metrics = harness.run_scenario(HAPPY_PATH_SCENARIOS[0], mock_agent)
+        assert metrics.input_tokens == 80
+        assert metrics.output_tokens == 30
+        assert metrics.total_tokens == 110
+        assert metrics.cost_usd > 0.0
 
     def test_run_scenario_creates_shared_memory_entry(self, mock_shared_memory, mock_agent):
         harness = EvaluationHarness(mock_shared_memory)
