@@ -32,9 +32,7 @@ jobs:
           cache: pip
 
       - name: Install dependencies
-        run: |
-          pip install -e ".[dev]"
-          python -m spacy download en_core_web_sm
+        run: pip install -e ".[dev]"
 
       - name: Generate synthetic data
         run: python synthetic_data/ticket_generator.py
