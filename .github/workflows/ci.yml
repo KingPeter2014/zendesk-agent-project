@@ -38,12 +38,15 @@ jobs:
         run: python synthetic_data/ticket_generator.py
 
       - name: Run unit tests
-        run: pytest tests/unit/ -v --tb=short --cov=memory --cov=skills --cov=guardrails --cov=rl_pipeline
+        run: pytest tests/unit/ -v --tb=short --cov=memory --cov=skills --cov=guardrails --cov=rl_pipeline --cov-fail-under=0
 
       - name: Run integration tests
-        run: pytest tests/integration/ -v --tb=short
+        run: pytest tests/integration/ -v --tb=short --cov-append --cov-fail-under=0
         env:
           REDIS_HOST: localhost
+
+      - name: Check combined coverage
+        run: coverage report --fail-under=80
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
