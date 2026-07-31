@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: Zendesk Agent Dashboards
+    folder: Zendesk
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards

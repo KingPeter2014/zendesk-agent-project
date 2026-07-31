@@ -1,0 +1,106 @@
+{
+  "title": "Zendesk Agent System",
+  "uid": "zendesk-agents",
+  "schemaVersion": 38,
+  "version": 1,
+  "refresh": "10s",
+  "panels": [
+    {
+      "id": 1,
+      "title": "Ticket Requests by Agent Role",
+      "type": "timeseries",
+      "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8},
+      "targets": [
+        {
+          "expr": "rate(zendesk_agent_requests_total[1m])",
+          "legendFormat": "{{agent_role}} / {{outcome}}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Agent Latency (p95)",
+      "type": "timeseries",
+      "gridPos": {"x": 12, "y": 0, "w": 12, "h": 8},
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, rate(zendesk_agent_latency_seconds_bucket[5m]))",
+          "legendFormat": "p95 {{agent_role}}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Skill Invocations",
+      "type": "bargauge",
+      "gridPos": {"x": 0, "y": 8, "w": 12, "h": 8},
+      "targets": [
+        {
+          "expr": "sum by (skill_name) (zendesk_skill_invocations_total)",
+          "legendFormat": "{{skill_name}}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Guardrail Blocks",
+      "type": "stat",
+      "gridPos": {"x": 12, "y": 8, "w": 6, "h": 4},
+      "targets": [
+        {
+          "expr": "sum(zendesk_guardrail_blocks_total)",
+          "legendFormat": "Total Blocks"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Memory Version Conflicts",
+      "type": "stat",
+      "gridPos": {"x": 18, "y": 8, "w": 6, "h": 4},
+      "targets": [
+        {
+          "expr": "zendesk_memory_version_conflicts_total",
+          "legendFormat": "Conflicts"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "A2A Delegation Success Rate",
+      "type": "gauge",
+      "gridPos": {"x": 12, "y": 12, "w": 12, "h": 8},
+      "targets": [
+        {
+          "expr": "sum(zendesk_a2a_delegations_total{success='true'}) / sum(zendesk_a2a_delegations_total)",
+          "legendFormat": "Success Rate"
+        }
+      ],
+      "options": {"minValue": 0, "maxValue": 1}
+    },
+    {
+      "id": 7,
+      "title": "Active Tickets in Memory",
+      "type": "stat",
+      "gridPos": {"x": 0, "y": 16, "w": 6, "h": 4},
+      "targets": [
+        {
+          "expr": "zendesk_memory_active_tickets",
+          "legendFormat": "Active Tickets"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "RL Trajectories Logged",
+      "type": "stat",
+      "gridPos": {"x": 6, "y": 16, "w": 6, "h": 4},
+      "targets": [
+        {
+          "expr": "zendesk_rl_trajectories_total",
+          "legendFormat": "Trajectories"
+        }
+      ]
+    }
+  ]
+}

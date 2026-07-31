@@ -1,0 +1,38 @@
+# Environments
+.venv311/
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Env vars
+.env
+
+# Test / coverage artifacts
+.pytest_cache/
+.deepeval/
+htmlcov/
+.coverage
+*.cover
+zendesk_agent.egg-info/
+*.egg-info/
+
+# Generated / runtime data
+data/chroma_db/
+data/*.db
+data/*.jsonl
+data/customers.json
+data/orders.json
+data/tickets.json
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

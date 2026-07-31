@@ -1,0 +1,92 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zendesk-agent"
+version = "0.1.0"
+description = "Zendesk next-gen agentic customer service demo"
+requires-python = ">=3.11"
+dependencies = [
+    # Agent framework
+    "langgraph>=0.2.0",
+    "langchain>=0.3.0",
+    "langchain-community>=0.3.0",
+    "langchain-ollama>=0.2.0",
+    # Memory
+    "redis>=5.0.0",
+    "chromadb>=0.5.0",
+    "sqlmodel>=0.0.21",
+    "pydantic>=2.7.0",
+    # Observability
+    "opentelemetry-api>=1.26.0",
+    "opentelemetry-sdk>=1.26.0",
+    "opentelemetry-exporter-otlp>=1.26.0",
+    "prometheus-client>=0.20.0",
+    # API
+    "fastapi>=0.112.0",
+    "uvicorn[standard]>=0.30.0",
+    # Synthetic data
+    "faker>=26.0.0",
+    # Utilities
+    "httpx>=0.27.0",
+    "tenacity>=8.5.0",
+    "rich>=13.7.0",
+    "python-dotenv>=1.0.0",
+    "numpy>=1.26.0",
+    # UI
+    "streamlit>=1.38.0",
+    "plotly>=5.24.0",
+    "pandas>=2.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=5.0.0",
+    "httpx>=0.27.0",
+    "fakeredis>=2.23.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["memory*", "skills*", "agents*", "a2a*", "evaluation*", "guardrails*", "rl_pipeline*", "observability*", "api*", "synthetic_data*", "demo*", "ui*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = [
+    "--cov=memory",
+    "--cov=skills",
+    "--cov=guardrails",
+    "--cov=rl_pipeline",
+    "--cov=evaluation",
+    "--cov=a2a",
+    "--cov=agents",
+    "--cov=synthetic_data",
+    "--cov-report=term-missing",
+    "--cov-report=html:htmlcov",
+    "--cov-fail-under=80",
+]
+
+[tool.coverage.run]
+branch = true
+omit = [
+    "*/tests/*",
+    "*/__init__.py",
+    "*/demo/*",
+    "*/api/*",
+    "*/observability/*",
+    "*/rl_pipeline/offline_rl.py",   # requires GPU/model download
+    "*/agents/meta_planner.py",       # requires Ollama runtime
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "raise NotImplementedError",
+    "def __repr__",
+    "pass$",
+]
