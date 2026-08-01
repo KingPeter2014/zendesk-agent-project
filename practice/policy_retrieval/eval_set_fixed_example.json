@@ -1,0 +1,82 @@
+[
+  {
+    "query": "How long do I have to send something back for a refund?",
+    "expected_policy_id": "pol_return_30"
+  },
+  {
+    "query": "Can I get my money back if I'm not happy with an order?",
+    "expected_policy_id": "pol_return_30"
+  },
+  {
+    "query": "What's the return window for a laptop I bought?",
+    "expected_policy_id": "pol_return_electronics"
+  },
+  {
+    "query": "Do I need the original box to return my headphones?",
+    "expected_policy_id": "pol_return_electronics"
+  },
+  {
+    "query": "How long until I see my refund in my account?",
+    "expected_policy_id": "pol_refund_timeline"
+  },
+  {
+    "query": "When does the refund clock start counting?",
+    "expected_policy_id": "pol_refund_timeline"
+  },
+  {
+    "query": "I found this item cheaper somewhere else, can you match it?",
+    "expected_policy_id": "pol_price_match"
+  },
+  {
+    "query": "Do you offer price matching against competitors?",
+    "expected_policy_id": "pol_price_match"
+  },
+  {
+    "query": "Is my blender covered if it breaks after a year?",
+    "expected_policy_id": "pol_warranty"
+  },
+  {
+    "query": "What's your warranty policy on defective products?",
+    "expected_policy_id": "pol_warranty"
+  },
+  {
+    "query": "Can I swap this shirt for a bigger size?",
+    "expected_policy_id": "pol_exchange"
+  },
+  {
+    "query": "I want a different colour, not a refund \u2014 is that possible?",
+    "expected_policy_id": "pol_exchange"
+  },
+  {
+    "query": "Do VIP members get faster delivery?",
+    "expected_policy_id": "pol_vip_shipping"
+  },
+  {
+    "query": "Is expedited shipping free for VIP customers?",
+    "expected_policy_id": "pol_vip_shipping"
+  },
+  {
+    "query": "Can I cancel my order before it ships?",
+    "expected_policy_id": "pol_cancel_order"
+  },
+  {
+    "query": "I just placed an order by mistake, can I stop it?",
+    "expected_policy_id": "pol_cancel_order"
+  },
+  {
+    "query": "How do I stop my monthly subscription?",
+    "expected_policy_id": "pol_subscription_cancel"
+  },
+  {
+    "query": "If I cancel today, do I lose access right away?",
+    "expected_policy_id": "pol_subscription_cancel"
+  },
+  {
+    "query": "Do gift cards ever expire?",
+    "expected_policy_id": "pol_gift_card"
+  },
+  {
+    "query": "Can I use a gift card on items that are on sale?",
+    "expected_policy_id": "pol_gift_card"
+  }
+]

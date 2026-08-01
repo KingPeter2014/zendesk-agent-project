@@ -5,10 +5,12 @@ from __future__ import annotations
 import time
 from typing import Any
 
+from opentelemetry import trace
 from tenacity import retry, stop_after_attempt, wait_exponential
 
 from memory.models import AgentStep, AgentRole, Plan, PlanStep, ToolCall, Trajectory, OutcomeType
 from memory.working_memory import WorkingMemory
+from observability.tracing import get_tracer
 from skills.registry import SkillRegistry
 
 
@@ -62,49 +64,55 @@ class ExecutionEngine:
         completed: dict[str, Any],
         context: dict[str, Any],
     ) -> AgentStep:
-        agent_step = AgentStep(
-            agent_id=self._agent_id,
-            agent_role=self._agent_role,
-            action=f"execute:{plan_step.skill_name}",
-            reasoning=plan_step.rationale,
-        )
+        tracer = get_tracer()
+        with tracer.start_as_current_span(f"skill.{plan_step.skill_name}") as span:
+            agent_step = AgentStep(
+                agent_id=self._agent_id,
+                agent_role=self._agent_role,
+                action=f"execute:{plan_step.skill_name}",
+                reasoning=plan_step.rationale,
+            )
 
-        entry = self._registry.get(plan_step.skill_name)
-        if entry is None:
+            entry = self._registry.get(plan_step.skill_name)
+            if entry is None:
+                span.set_status(trace.StatusCode.ERROR, "skill not found in registry")
+                tool_call = ToolCall(
+                    tool_name=plan_step.skill_name,
+                    inputs=plan_step.inputs,
+                    error=f"Skill '{plan_step.skill_name}' not found in registry",
+                )
+                agent_step.tool_calls.append(tool_call)
+                working_memory.record_tool_call(tool_call)
+                return agent_step
+
+            meta, fn = entry
+            merged_inputs = {**context, **plan_step.inputs}
+
+            start = time.perf_counter()
+            output = None
+            error = None
+            try:
+                output = self._invoke_with_retry(fn, merged_inputs)
+                self._registry.record_invocation(plan_step.skill_name, success=True)
+            except Exception as exc:
+                error = str(exc)
+                span.record_exception(exc)
+                span.set_status(trace.StatusCode.ERROR, error)
+                self._registry.record_invocation(plan_step.skill_name, success=False)
+
+            latency_ms = (time.perf_counter() - start) * 1000
+            span.set_attribute("skill.latency_ms", latency_ms)
+
             tool_call = ToolCall(
                 tool_name=plan_step.skill_name,
-                inputs=plan_step.inputs,
-                error=f"Skill '{plan_step.skill_name}' not found in registry",
+                inputs=merged_inputs,
+                output=output,
+                error=error,
+                latency_ms=latency_ms,
             )
             agent_step.tool_calls.append(tool_call)
-            working_memory.record_tool_call(tool_call)
+            working_memory.record_tool_call(tool_call, result_key=plan_step.skill_name)
             return agent_step
-
-        meta, fn = entry
-        merged_inputs = {**context, **plan_step.inputs}
-
-        start = time.perf_counter()
-        output = None
-        error = None
-        try:
-            output = self._invoke_with_retry(fn, merged_inputs)
-            self._registry.record_invocation(plan_step.skill_name, success=True)
-        except Exception as exc:
-            error = str(exc)
-            self._registry.record_invocation(plan_step.skill_name, success=False)
-
-        latency_ms = (time.perf_counter() - start) * 1000
-
-        tool_call = ToolCall(
-            tool_name=plan_step.skill_name,
-            inputs=merged_inputs,
-            output=output,
-            error=error,
-            latency_ms=latency_ms,
-        )
-        agent_step.tool_calls.append(tool_call)
-        working_memory.record_tool_call(tool_call, result_key=plan_step.skill_name)
-        return agent_step
 
     @staticmethod
     def _invoke_with_retry(fn, inputs: dict[str, Any], max_attempts: int = 3) -> Any:
