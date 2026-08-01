@@ -31,6 +31,10 @@ Coverage is enforced at ≥80% via `--cov-fail-under=80` in `pyproject.toml`. HT
 ### Environment
 Copy `.env.example` to `.env`. Key variables: `REDIS_URL`, `OLLAMA_BASE_URL`, `OTLP_ENDPOINT`, `PROMETHEUS_PORT`, `API_PORT`.
 
+`LLM_PROVIDER` selects the MetaPlanner's LLM backend at startup (`ollama` default, or `anthropic`
+— requires `ANTHROPIC_API_KEY`, billed to that Anthropic account). Switchable at runtime without
+a restart via the Streamlit sidebar or `PUT /config/llm-provider`; see `agents/llm_client.py`.
+
 ## Architecture Overview
 
 This is a multi-agent customer support system. The data flow is:

@@ -1,13 +1,13 @@
-"""MetaPlannerAgent: hierarchical planner using LangGraph + Ollama."""
+"""MetaPlannerAgent: hierarchical planner using LangGraph + a switchable LLM provider."""
 
 from __future__ import annotations
 
 import json
 from typing import Any, Literal, TypedDict
 
-from langchain_ollama import OllamaLLM
 from langgraph.graph import END, START, StateGraph
 
+import config
 from a2a.capability_registry import CapabilityRegistry
 from a2a.protocol import A2AProtocol
 from memory.models import (
@@ -15,6 +15,7 @@ from memory.models import (
 )
 from memory.working_memory import WorkingMemory
 from agents.base_agent import BaseAgent
+from agents.llm_client import LLMClient, create_llm_client
 from skills.execution_engine import ExecutionEngine
 from skills.registry import SkillRegistry
 
@@ -41,7 +42,7 @@ class PlannerState(TypedDict):
 # Node implementations
 # ---------------------------------------------------------------------------
 
-def _decompose_node(state: PlannerState, llm: OllamaLLM) -> PlannerState:
+def _decompose_node(state: PlannerState, llm: LLMClient) -> PlannerState:
     ticket = state["ticket"]
     body = ticket.get("body", "")
     category = ticket.get("category", "")
@@ -62,19 +63,15 @@ Reply in JSON only:
     input_tokens = 0
     output_tokens = 0
     try:
-        result = llm.generate([prompt])
-        generation = result.generations[0][0]
-        response = generation.text
-        usage = generation.generation_info or {}
-        # Ollama's native response fields, surfaced via generation_info.
-        input_tokens = usage.get("prompt_eval_count", 0)
-        output_tokens = usage.get("eval_count", 0)
+        result = llm.complete(prompt)
+        input_tokens = result.input_tokens
+        output_tokens = result.output_tokens
         # Extract JSON from response (LLMs sometimes wrap in markdown)
-        start_idx = response.find("{")
-        end_idx = response.rfind("}") + 1
-        parsed = json.loads(response[start_idx:end_idx]) if start_idx >= 0 else {}
+        start_idx = result.text.find("{")
+        end_idx = result.text.rfind("}") + 1
+        parsed = json.loads(result.text[start_idx:end_idx]) if start_idx >= 0 else {}
     except Exception:
-        # Fallback: route by category when Ollama is unavailable or returns non-JSON
+        # Fallback: route by category when the LLM provider is unavailable or returns non-JSON
         parsed = {}
 
     clarification_needed = bool(parsed.get("clarification_needed", False))
@@ -172,16 +169,28 @@ class MetaPlannerAgent(BaseAgent):
     def __init__(
         self,
         capability_registry: CapabilityRegistry,
-        ollama_model: str = "mistral:7b-instruct",
-        ollama_base_url: str = "http://localhost:11434",
+        llm_provider: str | None = None,
         **kwargs: Any,
     ) -> None:
         super().__init__(role=self.ROLE, **kwargs)
         self._capability_registry = capability_registry
         self._protocol = A2AProtocol(capability_registry, self.shared_memory)
-        self._llm = OllamaLLM(model=ollama_model, base_url=ollama_base_url, temperature=0.1)
+        self._llm: LLMClient = create_llm_client(llm_provider or config.LLM_PROVIDER)
         self._graph = self._build_graph()
         self._execution_engine = ExecutionEngine(self.registry, self.agent_id, self.ROLE)
+
+    @property
+    def llm_provider(self) -> str:
+        return self._llm.provider_name
+
+    def switch_provider(self, provider: str, **overrides: str) -> None:
+        """Swap the active LLM client at runtime.
+
+        The `decompose` graph node closes over `self` (not a snapshot of
+        `self._llm`), so reassigning `self._llm` here takes effect on the very
+        next `.handle()` call — no graph rebuild needed.
+        """
+        self._llm = create_llm_client(provider, **overrides)
 
     def _build_graph(self) -> Any:
         builder: StateGraph = StateGraph(PlannerState)

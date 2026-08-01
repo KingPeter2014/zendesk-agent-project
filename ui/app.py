@@ -25,6 +25,8 @@ import uuid
 
 import streamlit as st
 
+import config
+
 st.set_page_config(
     page_title="Zendesk Agent System",
     page_icon="🤖",
@@ -54,11 +56,33 @@ page = st.sidebar.radio("Navigate", list(PAGES.keys()), label_visibility="collap
 
 # Lazy bootstrap
 sys_ctx = get_system()
+meta_planner = sys_ctx["meta_planner"]
 
 redis_status = status_badge(sys_ctx.get("redis_ok", False), "Redis")
-ollama_status = "🟡 Ollama (check docker)"
+llm_status = f"🟢 {meta_planner.llm_provider.capitalize()} active"
 st.sidebar.divider()
-st.sidebar.markdown(f"**Infrastructure**\n\n{redis_status}  \n{ollama_status}")
+st.sidebar.markdown(f"**Infrastructure**\n\n{redis_status}  \n{llm_status}")
+
+# --- LLM provider switch (global — applies to the whole running app) ---
+PROVIDER_LABELS = {"ollama": "Ollama (local Mistral)", "anthropic": "Anthropic (Claude)"}
+provider_options = list(PROVIDER_LABELS.keys())
+current_provider = meta_planner.llm_provider
+selected_provider = st.sidebar.selectbox(
+    "LLM Provider",
+    provider_options,
+    index=provider_options.index(current_provider),
+    format_func=lambda p: PROVIDER_LABELS[p],
+)
+if selected_provider != current_provider:
+    if selected_provider == "anthropic" and not config.ANTHROPIC_API_KEY:
+        st.sidebar.error("ANTHROPIC_API_KEY not set in .env — cannot switch to Anthropic.")
+    else:
+        try:
+            meta_planner.switch_provider(selected_provider)
+            st.rerun()
+        except Exception as e:
+            st.sidebar.error(f"Failed to switch provider: {e}")
+
 st.sidebar.markdown("---")
 st.sidebar.caption("Jaeger: [localhost:16686](http://localhost:16686)  \nGrafana: [localhost:3000](http://localhost:3000)")
 

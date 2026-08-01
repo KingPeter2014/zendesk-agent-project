@@ -89,6 +89,10 @@ class TicketResponse(BaseModel):
     guardrail_triggered: bool
 
 
+class LLMProviderRequest(BaseModel):
+    provider: str
+
+
 # ---------------------------------------------------------------------------
 # Routes
 # ---------------------------------------------------------------------------
@@ -161,6 +165,20 @@ def list_capabilities():
 @app.get("/guardrail-events")
 def guardrail_events():
     return [e.model_dump(mode="json") for e in input_guardrails.get_events()]  # type: ignore[union-attr]
+
+
+@app.get("/config/llm-provider")
+def get_llm_provider():
+    return {"provider": meta_planner.llm_provider}  # type: ignore[union-attr]
+
+
+@app.put("/config/llm-provider")
+def set_llm_provider(request: LLMProviderRequest):
+    try:
+        meta_planner.switch_provider(request.provider)  # type: ignore[union-attr]
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    return {"provider": meta_planner.llm_provider}  # type: ignore[union-attr]
 
 
 @app.get("/health")
