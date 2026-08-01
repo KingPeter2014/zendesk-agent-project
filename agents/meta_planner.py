@@ -15,6 +15,7 @@ from memory.models import (
 )
 from memory.working_memory import WorkingMemory
 from agents.base_agent import BaseAgent
+from observability.tracing import traced
 from skills.execution_engine import ExecutionEngine
 from skills.registry import SkillRegistry
 
@@ -199,6 +200,7 @@ class MetaPlannerAgent(BaseAgent):
 
         return builder.compile()
 
+    @traced("meta_planner.handle")
     def handle(self, ticket: Ticket, context: dict[str, Any] | None = None) -> Trajectory:
         ctx = context or {}
         wm = WorkingMemory(ticket_id=ticket.ticket_id, agent_id=self.agent_id)

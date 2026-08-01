@@ -56,7 +56,7 @@ page = st.sidebar.radio("Navigate", list(PAGES.keys()), label_visibility="collap
 sys_ctx = get_system()
 
 redis_status = status_badge(sys_ctx.get("redis_ok", False), "Redis")
-ollama_status = "🟡 Ollama (check docker)"
+ollama_status = status_badge(sys_ctx.get("ollama_ok", False), "Ollama")
 st.sidebar.divider()
 st.sidebar.markdown(f"**Infrastructure**\n\n{redis_status}  \n{ollama_status}")
 st.sidebar.markdown("---")
