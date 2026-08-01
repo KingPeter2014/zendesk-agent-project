@@ -50,6 +50,9 @@ dev = [
     "fakeredis>=2.23.0",
 ]
 
+[tool.setuptools]
+py-modules = ["config"]
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["memory*", "skills*", "agents*", "a2a*", "evaluation*", "guardrails*", "rl_pipeline*", "observability*", "api*", "synthetic_data*", "demo*", "ui*"]
