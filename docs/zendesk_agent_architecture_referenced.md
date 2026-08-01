@@ -36,6 +36,8 @@ The system must also respect memory scopes—user, session, agent and applicatio
 
 At the top sits a **meta‑planner** (Figure 1) that receives the user ticket and constructs a hierarchical plan.  It uses goal‑recognition heuristics, domain ontologies and, when the goal is ambiguous, issues clarification prompts.  The planner iteratively decomposes tasks into actions, referencing a **skill registry** for reusable functions (e.g., “lookup order”, “process refund”).  Plans are saved to shared memory and annotated with success criteria (objectives and guard conditions).
 
+> **Implemented:** the planner's LLM backend is provider-agnostic (`agents/llm_client.py`), defaulting to a local Ollama Mistral 7B instance but swappable to Anthropic Claude — either at startup via `LLM_PROVIDER` or at runtime through the UI sidebar / `PUT /config/llm-provider` — without rebuilding the LangGraph state machine. See the README's "LLM Provider" section for details.
+
 
 ### 2. Skill Registry and Execution Engine
 
@@ -93,6 +95,8 @@ Security and safety controls are layered:
 ### 8. Observability and Logging
 
 Comprehensive logging tracks every plan, tool call, API response and internal error.  Logs feed the evaluation harness, RL training pipelines and guardrail monitoring.  A dashboard surfaces metrics across reasoning and action layers as well as cost and latency.  Observability also enables anomaly detection (e.g., sudden spike in API calls) and triggers automated responses.
+
+> **Implemented:** A2A delegation, delegated-task handling, skill execution, and the `/ticket` API endpoint are each wrapped in an OpenTelemetry span, giving full request-level traces in Jaeger. The planner's LLM backend is also provider-agnostic and runtime-switchable (Ollama Mistral 7B ⇄ Anthropic Claude) via `agents/llm_client.py` — see the README's "LLM Provider" section.
 
 ## Critical Design Decisions
 

@@ -8,6 +8,12 @@ A working end-to-end demonstration of Zendesk's next-generation agentic customer
 
 ```
                         ┌─────────────────────────────────────────────────────┐
+                        │   LLMClient — runtime-switchable provider            │
+                        │   Ollama Mistral 7B  ⇄  Anthropic Claude             │
+                        │   switch via UI sidebar or PUT /config/llm-provider  │
+                        └──────────────────┬──────────────────────────────────┘
+                                           │
+                        ┌──────────────────▼──────────────────────────────────┐
                         │              MetaPlannerAgent  (LangGraph)           │
                         │  decompose → clarify / delegate / self-handle        │
                         └──────────────────┬──────────────────────────────────┘
@@ -37,11 +43,15 @@ A working end-to-end demonstration of Zendesk's next-generation agentic customer
      (scrub / hallucinate)                                    (ORPO fine-tuning)
 ```
 
+Every A2A delegation, delegated-task handoff, skill execution, and `/ticket` API
+request emits an OpenTelemetry span, so a single request can be followed
+end-to-end in Jaeger — see [Observability](#observability).
+
 ### Open-source stack
 
 | Layer | Technology | Licence |
 |---|---|---|
-| LLM reasoning | Ollama · Mistral 7B-Instruct | MIT |
+| LLM reasoning | Ollama · Mistral 7B-Instruct (default) — swappable to Anthropic Claude | MIT / commercial |
 | Agent framework | LangGraph | MIT |
 | Shared memory | Redis 7 (optimistic locking) | BSD |
 | Vector / episodic memory | ChromaDB (embedded) | Apache 2.0 |
@@ -54,6 +64,31 @@ A working end-to-end demonstration of Zendesk's next-generation agentic customer
 | REST API | FastAPI + Uvicorn | MIT |
 | **UI** | **Streamlit + Plotly** | **Apache 2.0** |
 | Testing | pytest + pytest-cov | MIT |
+
+---
+
+## LLM Provider (Ollama ⇄ Anthropic Claude)
+
+The MetaPlanner's LLM backend is pluggable (`agents/llm_client.py`). Both providers
+implement the same `LLMClient.complete(prompt) -> LLMResponse` interface, so the
+planner graph is agnostic to which one is active.
+
+| Provider | `LLM_PROVIDER` value | Requires | Notes |
+|---|---|---|---|
+| Ollama (default) | `ollama` | Local `mistral:7b-instruct` via Docker | Free, runs entirely offline |
+| Anthropic Claude | `anthropic` | `ANTHROPIC_API_KEY` in `.env` | Billed to your Anthropic account; model set via `ANTHROPIC_MODEL` (default `claude-haiku-4-5-20251001`) |
+
+The provider can be changed **at runtime, without restarting the app**:
+- **UI** — the "LLM Provider" selector in the Streamlit sidebar calls `MetaPlannerAgent.switch_provider()` and reruns the page.
+- **API** — `GET /config/llm-provider` / `PUT /config/llm-provider` (see [REST API](#rest-api)).
+
+Set the default provider on startup via `.env`:
+
+```bash
+LLM_PROVIDER=ollama          # or "anthropic"
+ANTHROPIC_API_KEY=           # required if LLM_PROVIDER=anthropic or switching to it at runtime
+ANTHROPIC_MODEL=claude-haiku-4-5-20251001
+```
 
 ---
 
@@ -135,7 +170,11 @@ API docs available at `http://localhost:8000/docs`.
 
 ## UI Application
 
-The Streamlit UI (`streamlit run ui/app.py`) is the primary interface for exploring the agent system. It has six pages, accessible from the left sidebar:
+The Streamlit UI (`streamlit run ui/app.py`) is the primary interface for exploring the agent system. It has six pages, accessible from the left sidebar.
+
+The sidebar also shows live infrastructure status (Redis, a real Ollama `/api/tags`
+liveness check) and the active LLM provider, plus an **LLM Provider** selector to
+switch between Ollama and Anthropic Claude at runtime — see the "LLM Provider" section above.
 
 ### 🎫 Submit Ticket
 
@@ -222,6 +261,8 @@ pytest tests/ && start htmlcov/index.html  # Windows
 | `test_rewards.py` | All reward functions, composite reward, scoring | rl_pipeline |
 | `test_trajectory_logger.py` | Log, fetch, upsert, step serialisation | trajectory logger |
 | `test_a2a.py` | Capability registry, delegation, timeout, error | a2a protocol |
+| `test_llm_client.py` | OllamaClient / AnthropicClient `.complete()`, `create_llm_client` factory | agents/llm_client |
+| `test_meta_planner.py` | Token capture, provider switching, routing unaffected by provider | agents/meta_planner |
 | `test_evaluation_metrics.py` | All metric functions, evaluate_trajectory | evaluation metrics |
 | `test_synthetic_data.py` | Customer/order/ticket generators | synthetic_data |
 | `test_agents.py` (integration) | BillingAgent, PolicyAgent, EscalationAgent | agents |
@@ -250,7 +291,8 @@ zendesk_agent_project/
 │       └── register.py
 ├── agents/
 │   ├── base_agent.py
-│   ├── meta_planner.py         # LangGraph StateGraph + Ollama Mistral 7B
+│   ├── meta_planner.py         # LangGraph StateGraph + switchable LLM provider
+│   ├── llm_client.py           # LLMClient abstraction: Ollama <-> Anthropic Claude
 │   ├── billing_agent.py
 │   ├── policy_agent.py
 │   ├── escalation_agent.py
@@ -290,6 +332,7 @@ zendesk_agent_project/
 │   ├── customer_generator.py
 │   └── order_generator.py
 ├── api/main.py                 # FastAPI REST layer
+├── config.py                   # Centralised env config (loads .env once)
 ├── tests/
 │   ├── unit/                   # 13 unit test modules
 │   └── integration/            # Agent pipeline tests
@@ -330,6 +373,8 @@ uvicorn api.main:app --reload --port 8000
 | `GET` | `/skills` | List all registered skills with stats |
 | `GET` | `/capabilities` | List registered agent capabilities |
 | `GET` | `/guardrail-events` | All guardrail events this session |
+| `GET` | `/config/llm-provider` | Get the MetaPlanner's active LLM provider |
+| `PUT` | `/config/llm-provider` | Switch the active LLM provider at runtime (`{"provider": "ollama"\|"anthropic"}`) |
 | `GET` | `/health` | Health check |
 
 ```bash
