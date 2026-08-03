@@ -32,7 +32,7 @@ The following backlog outlines a high‑level plan to design, implement and depl
 • Experiment with offline RL algorithms (OREO) on internal datasets; compare with DPO and supervised fine‑tuning.  
 • Design evaluation metrics to compare candidate models using the harness. |
 | **Month 6 (Nov 2026)** | **Model Training & Iterative Improvement** |  
-• Train a small‑scale domain‑specialised model using offline RL; incorporate value functions and soft Bellman optimisation【521210494030547†L86-L105】.  
+• Train a small‑scale domain‑specialised model using offline RL; incorporate value functions and soft Bellman optimisation.  
 • Run ablation studies on reward shaping and data filtering.  
 • Deploy the candidate model in a sandbox environment and monitor performance; iterate on reward parameters and training hyper‑parameters.  
 • Begin implementing online rollouts in simulation to supplement offline learning. |
