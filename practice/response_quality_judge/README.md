@@ -1,14 +1,10 @@
 # Response Quality Judge
 
-A small component that uses an LLM to judge whether a generated support
-response adequately resolves a customer's ticket. This one is for genuine,
-unspoiled practice — **there is no `solutions/` folder or answer key for
-this scenario.**
+A small component that uses an LLM to judge whether a generated support response adequately resolves a customer's ticket. This one is for genuine, unspoiled practice — **there is no `solutions/` folder or answer key for this scenario.**
 
 ## Setup
 
-Requires Ollama running locally with `mistral:7b-instruct` pulled (the same
-model the rest of this project uses):
+Requires Ollama running locally with `mistral:7b-instruct` pulled (the same model the rest of this project uses):
 
 ```bash
 docker-compose up -d
@@ -26,16 +22,12 @@ python practice/response_quality_judge/eval.py
 - `tickets.json` — 14 `(ticket_body, response)` pairs. No labels.
 - `judge.py` — `LLMJudge.judge(ticket_body, response) -> "PASS" | "FAIL"`,
   a single live call to the local Mistral model per invocation.
-- `metrics.py` — `judge_pass_rate(eval_set, judge)`, the metric already in
-  place: the fraction of responses the judge rates PASS, based on one run
-  per example.
+- `metrics.py` — `judge_pass_rate(eval_set, judge)`, the metric already in place: the fraction of responses the judge rates PASS, based on one run per example.
 - `eval.py` — runs the eval set through the judge and prints the pass rate.
 
 ## Task (45–60 minutes)
 
-1. **Find and fix an existing issue.** Run `eval.py` a few times. Look at
-   the reported `judge_pass_rate`. Is a single LLM call, run once per
-   example, something you'd trust as ground truth for a quality metric?
+1. **Find and fix an existing issue.** Run `eval.py` a few times. Look at the reported `judge_pass_rate`. Is a single LLM call, run once per example, something you'd trust as ground truth for a quality metric?
    What would you actually check to find out? (The judge and metric code
    are both doing exactly what they claim to do — that doesn't mean the
    number they produce is trustworthy.)
