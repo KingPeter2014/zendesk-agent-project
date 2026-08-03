@@ -1,0 +1,1982 @@
+[
+  {
+    "ticket_id": "T0000",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 196,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0001",
+    "category": "billing_dispute",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 276,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0002",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 135,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0003",
+    "category": "billing_dispute",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 119,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0004",
+    "category": "order_issue",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 202,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0005",
+    "category": "billing_dispute",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 194,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0006",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 222,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0007",
+    "category": "order_issue",
+    "priority": "high",
+    "customer_tier": "vip",
+    "body_length": 142,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0008",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 141,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0009",
+    "category": "billing_dispute",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 223,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0010",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "vip",
+    "body_length": 163,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0011",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 140,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0012",
+    "category": "order_issue",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 171,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0013",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 139,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0014",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 46,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0015",
+    "category": "billing_dispute",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 337,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0016",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 253,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0017",
+    "category": "billing_dispute",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 178,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0018",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 37,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0019",
+    "category": "off_topic",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 222,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0020",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 185,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0021",
+    "category": "billing_dispute",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 105,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0022",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 157,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0023",
+    "category": "off_topic",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 170,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0024",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 314,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0025",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 149,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0026",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 137,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0027",
+    "category": "billing_dispute",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 248,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0028",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 159,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0029",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 143,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0030",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 120,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0031",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 211,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0032",
+    "category": "order_issue",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 137,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0033",
+    "category": "vip_escalation",
+    "priority": "high",
+    "customer_tier": "premium",
+    "body_length": 202,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0034",
+    "category": "off_topic",
+    "priority": "high",
+    "customer_tier": "vip",
+    "body_length": 284,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0035",
+    "category": "order_issue",
+    "priority": "high",
+    "customer_tier": "vip",
+    "body_length": 127,
+    "assigned_team": "escalation_specialists",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0036",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 119,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0037",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 197,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0038",
+    "category": "billing_dispute",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 179,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0039",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "vip",
+    "body_length": 159,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0040",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 62,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0041",
+    "category": "billing_dispute",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 261,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0042",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 184,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0043",
+    "category": "policy_question",
+    "priority": "critical",
+    "customer_tier": "vip",
+    "body_length": 240,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0044",
+    "category": "off_topic",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 190,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0045",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 225,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0046",
+    "category": "off_topic",
+    "priority": "critical",
+    "customer_tier": "premium",
+    "body_length": 92,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0047",
+    "category": "billing_dispute",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 163,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0048",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 193,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0049",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "vip",
+    "body_length": 233,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0050",
+    "category": "vip_escalation",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 164,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0051",
+    "category": "vip_escalation",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 207,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0052",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 150,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0053",
+    "category": "billing_dispute",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 163,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0054",
+    "category": "off_topic",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 154,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0055",
+    "category": "order_issue",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 156,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0056",
+    "category": "vip_escalation",
+    "priority": "high",
+    "customer_tier": "premium",
+    "body_length": 197,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0057",
+    "category": "billing_dispute",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 136,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0058",
+    "category": "policy_question",
+    "priority": "high",
+    "customer_tier": "premium",
+    "body_length": 194,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0059",
+    "category": "billing_dispute",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 266,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0060",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 213,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0061",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 147,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0062",
+    "category": "off_topic",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 211,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0063",
+    "category": "off_topic",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 157,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0064",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 152,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0065",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 133,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0066",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 263,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0067",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 146,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0068",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 95,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0069",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 212,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0070",
+    "category": "billing_dispute",
+    "priority": "high",
+    "customer_tier": "premium",
+    "body_length": 160,
+    "assigned_team": "escalation_specialists",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0071",
+    "category": "order_issue",
+    "priority": "critical",
+    "customer_tier": "premium",
+    "body_length": 142,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0072",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 135,
+    "assigned_team": "escalation_specialists",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0073",
+    "category": "billing_dispute",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 181,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0074",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 218,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0075",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "vip",
+    "body_length": 125,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0076",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "vip",
+    "body_length": 146,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0077",
+    "category": "order_issue",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 191,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0078",
+    "category": "order_issue",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 169,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0079",
+    "category": "order_issue",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 226,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0080",
+    "category": "vip_escalation",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 144,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0081",
+    "category": "off_topic",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 200,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0082",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 182,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0083",
+    "category": "off_topic",
+    "priority": "high",
+    "customer_tier": "premium",
+    "body_length": 62,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0084",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 153,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0085",
+    "category": "order_issue",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 124,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0086",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 205,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0087",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 151,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0088",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 254,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0089",
+    "category": "billing_dispute",
+    "priority": "high",
+    "customer_tier": "premium",
+    "body_length": 189,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0090",
+    "category": "order_issue",
+    "priority": "high",
+    "customer_tier": "premium",
+    "body_length": 184,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0091",
+    "category": "vip_escalation",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 247,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0092",
+    "category": "billing_dispute",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 150,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0093",
+    "category": "vip_escalation",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 253,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0094",
+    "category": "order_issue",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 227,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0095",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 114,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0096",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 116,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0097",
+    "category": "vip_escalation",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 183,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0098",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "vip",
+    "body_length": 190,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0099",
+    "category": "policy_question",
+    "priority": "high",
+    "customer_tier": "premium",
+    "body_length": 113,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0100",
+    "category": "order_issue",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 153,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0101",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 132,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0102",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 196,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0103",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 221,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0104",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 183,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0105",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 268,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0106",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 170,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0107",
+    "category": "order_issue",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 128,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0108",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "vip",
+    "body_length": 204,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0109",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 136,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0110",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 187,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0111",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 185,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0112",
+    "category": "billing_dispute",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 166,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0113",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 165,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0114",
+    "category": "off_topic",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 114,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0115",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 170,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0116",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 218,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0117",
+    "category": "vip_escalation",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 201,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0118",
+    "category": "policy_question",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 127,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0119",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 54,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0120",
+    "category": "order_issue",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 144,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0121",
+    "category": "billing_dispute",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 273,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0122",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 241,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0123",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 195,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0124",
+    "category": "billing_dispute",
+    "priority": "critical",
+    "customer_tier": "premium",
+    "body_length": 177,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0125",
+    "category": "vip_escalation",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 197,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0126",
+    "category": "vip_escalation",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 135,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0127",
+    "category": "vip_escalation",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 208,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0128",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 179,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0129",
+    "category": "billing_dispute",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 209,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0130",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 161,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0131",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 186,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0132",
+    "category": "off_topic",
+    "priority": "high",
+    "customer_tier": "premium",
+    "body_length": 176,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0133",
+    "category": "billing_dispute",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 189,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0134",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 265,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0135",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 35,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0136",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 59,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0137",
+    "category": "policy_question",
+    "priority": "high",
+    "customer_tier": "premium",
+    "body_length": 251,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0138",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 129,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0139",
+    "category": "order_issue",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 268,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0140",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 149,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0141",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 74,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0142",
+    "category": "billing_dispute",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 114,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0143",
+    "category": "order_issue",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 169,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0144",
+    "category": "vip_escalation",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 251,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0145",
+    "category": "vip_escalation",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 84,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0146",
+    "category": "policy_question",
+    "priority": "critical",
+    "customer_tier": "premium",
+    "body_length": 155,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0147",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 191,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0148",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 225,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0149",
+    "category": "order_issue",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 238,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0150",
+    "category": "vip_escalation",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 135,
+    "assigned_team": "general_support",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0151",
+    "category": "vip_escalation",
+    "priority": "critical",
+    "customer_tier": "premium",
+    "body_length": 191,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0152",
+    "category": "policy_question",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 269,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0153",
+    "category": "vip_escalation",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 158,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0154",
+    "category": "policy_question",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 267,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0155",
+    "category": "billing_dispute",
+    "priority": "critical",
+    "customer_tier": "premium",
+    "body_length": 167,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0156",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 125,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0157",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "vip",
+    "body_length": 116,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0158",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 269,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0159",
+    "category": "order_issue",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 276,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0160",
+    "category": "policy_question",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 211,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0161",
+    "category": "policy_question",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 118,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0162",
+    "category": "order_issue",
+    "priority": "high",
+    "customer_tier": "premium",
+    "body_length": 335,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0163",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 160,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0164",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 206,
+    "assigned_team": "escalation_specialists",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0165",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 169,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0166",
+    "category": "vip_escalation",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 152,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0167",
+    "category": "vip_escalation",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 197,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0168",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 238,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0169",
+    "category": "vip_escalation",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 159,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0170",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 42,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0171",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "vip",
+    "body_length": 231,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0172",
+    "category": "order_issue",
+    "priority": "critical",
+    "customer_tier": "vip",
+    "body_length": 191,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0173",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 156,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0174",
+    "category": "order_issue",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 191,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0175",
+    "category": "order_issue",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 220,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0176",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 272,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0177",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 256,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0178",
+    "category": "vip_escalation",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 77,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0179",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 195,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0180",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 393,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0181",
+    "category": "billing_dispute",
+    "priority": "medium",
+    "customer_tier": "vip",
+    "body_length": 222,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0182",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 123,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0183",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 123,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0184",
+    "category": "billing_dispute",
+    "priority": "high",
+    "customer_tier": "premium",
+    "body_length": 191,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0185",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 84,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0186",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 155,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0187",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 204,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0188",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "vip",
+    "body_length": 97,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0189",
+    "category": "vip_escalation",
+    "priority": "high",
+    "customer_tier": "premium",
+    "body_length": 146,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0190",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 218,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0191",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 236,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0192",
+    "category": "off_topic",
+    "priority": "critical",
+    "customer_tier": "premium",
+    "body_length": 114,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0193",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 123,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0194",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 124,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0195",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 155,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0196",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 193,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0197",
+    "category": "order_issue",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 103,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0198",
+    "category": "vip_escalation",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 165,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0199",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 279,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0200",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 230,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0201",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 182,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0202",
+    "category": "order_issue",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 66,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0203",
+    "category": "billing_dispute",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 179,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0204",
+    "category": "vip_escalation",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 154,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0205",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "premium",
+    "body_length": 194,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0206",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 120,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0207",
+    "category": "policy_question",
+    "priority": "high",
+    "customer_tier": "standard",
+    "body_length": 170,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0208",
+    "category": "order_issue",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 164,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0209",
+    "category": "order_issue",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 70,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0210",
+    "category": "billing_dispute",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 79,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0211",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "vip",
+    "body_length": 183,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0212",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 132,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0213",
+    "category": "off_topic",
+    "priority": "low",
+    "customer_tier": "standard",
+    "body_length": 198,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0214",
+    "category": "policy_question",
+    "priority": "low",
+    "customer_tier": "premium",
+    "body_length": 230,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0215",
+    "category": "off_topic",
+    "priority": "critical",
+    "customer_tier": "premium",
+    "body_length": 114,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0216",
+    "category": "off_topic",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 146,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0217",
+    "category": "policy_question",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 185,
+    "assigned_team": "general_support",
+    "escalated": false
+  },
+  {
+    "ticket_id": "T0218",
+    "category": "vip_escalation",
+    "priority": "critical",
+    "customer_tier": "standard",
+    "body_length": 135,
+    "assigned_team": "escalation_specialists",
+    "escalated": true
+  },
+  {
+    "ticket_id": "T0219",
+    "category": "policy_question",
+    "priority": "medium",
+    "customer_tier": "standard",
+    "body_length": 143,
+    "assigned_team": "general_support",
+    "escalated": false
+  }
+]
