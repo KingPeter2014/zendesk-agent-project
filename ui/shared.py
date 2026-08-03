@@ -30,7 +30,20 @@ def get_system():
 
     system = build_full_system(shared_memory)
     system["redis_ok"] = redis_ok
+    system["ollama_ok"] = _check_ollama()
     return system
+
+
+def _check_ollama() -> bool:
+    import os
+    import requests
+
+    base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+    try:
+        resp = requests.get(f"{base_url}/api/tags", timeout=2)
+        return resp.status_code == 200
+    except Exception:
+        return False
 
 
 def status_badge(ok: bool, label: str) -> str:

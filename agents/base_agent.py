@@ -6,12 +6,15 @@ import uuid
 from abc import ABC, abstractmethod
 from typing import Any
 
+from opentelemetry import trace
+
 from memory.models import (
     AgentRole, DelegationContract, DelegationResult, OutcomeType, Ticket, Trajectory,
 )
 from memory.per_agent_memory import PerAgentMemory
 from memory.shared_memory import SharedTicketMemory
 from memory.working_memory import WorkingMemory
+from observability.tracing import get_tracer
 from skills.registry import SkillRegistry
 
 
@@ -49,22 +52,30 @@ class BaseAgent(ABC):
         Override `_delegation_succeeded` to customize what counts as success;
         override this method entirely for agents that don't accept delegated tasks.
         """
-        state = self.shared_memory.get(contract.shared_memory_ref)
-        if state is None:
-            return DelegationResult(contract_id=contract.contract_id, success=False, error="Ticket state not found")
+        tracer = get_tracer()
+        with tracer.start_as_current_span(f"{self.role.value}.handle_delegation") as span:
+            span.set_attribute("agent.id", self.agent_id)
+            span.set_attribute("delegation.contract_id", contract.contract_id)
 
-        trajectory = self.handle(state.ticket, contract.inputs)
-        outputs: dict[str, Any] = {}
-        for step in trajectory.steps:
-            for tc in step.tool_calls:
-                if tc.output:
-                    outputs[tc.tool_name] = tc.output
+            state = self.shared_memory.get(contract.shared_memory_ref)
+            if state is None:
+                span.set_status(trace.StatusCode.ERROR, "ticket state not found")
+                return DelegationResult(contract_id=contract.contract_id, success=False, error="Ticket state not found")
 
-        return DelegationResult(
-            contract_id=contract.contract_id,
-            success=self._delegation_succeeded(trajectory),
-            outputs=outputs,
-        )
+            trajectory = self.handle(state.ticket, contract.inputs)
+            outputs: dict[str, Any] = {}
+            for step in trajectory.steps:
+                for tc in step.tool_calls:
+                    if tc.output:
+                        outputs[tc.tool_name] = tc.output
+
+            success = self._delegation_succeeded(trajectory)
+            span.set_attribute("delegation.success", success)
+            return DelegationResult(
+                contract_id=contract.contract_id,
+                success=success,
+                outputs=outputs,
+            )
 
     def _delegation_succeeded(self, trajectory: Trajectory) -> bool:
         """Whether a delegated task's trajectory counts as a success. Override per agent."""
